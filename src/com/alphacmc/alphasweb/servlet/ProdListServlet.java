@@ -43,7 +43,7 @@ public class ProdListServlet extends HttpServlet {
 
 
             //SELECT文の準備
-            String sql = "SELECT prod_id, prod_name, price FROM prod";
+            String sql = "SELECT prod_id, prod_name, price FROM prod ORDER BY prod_id";
 
             //結果の取得
             prodList = objDao.getResultList(sql);

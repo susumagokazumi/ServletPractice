@@ -42,7 +42,7 @@ public class CustomerListServlet extends HttpServlet {
 
 
             //SELECT文の準備
-            String sql = "SELECT customer_id, customer_name FROM customer";
+            String sql = "SELECT customer_id, customer_name FROM customer ORDER BY customer_id ";
             
             //結果の取得
             customerList = objDao.getResultList(sql);

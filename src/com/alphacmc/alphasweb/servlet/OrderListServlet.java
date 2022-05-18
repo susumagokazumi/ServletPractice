@@ -43,9 +43,16 @@ public class OrderListServlet extends HttpServlet {
                        + "LEFT OUTER JOIN customer c "
                        + "ON o.customer_id = c.customer_id "
                        + "LEFT OUTER JOIN prod p "
-                       + "ON o.prod_id = p.prod_id";
+                       + "ON o.prod_id = p.prod_id "
+                       + "ORDER BY order_id ";
             //結果の取得
             orderList = objDao.getResultList(sql);
+//            Collections.sort(orderList, new Comparator<Object>(){
+//                public int compare(Object o1, Object o2){
+//                    return ((OrderBean)o1).getOrderId().compareTo(((OrderBean)o2).getOrderId());
+//                }
+//            });
+//            
 
         } catch (Exception e){
                 e.printStackTrace();
