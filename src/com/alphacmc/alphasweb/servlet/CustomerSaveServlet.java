@@ -29,24 +29,24 @@ public class CustomerSaveServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         // パラメータ取得 & Formセット
-    	CustomerForm customerForm = new CustomerForm();
-    	customerForm.setCustomerId(Integer.parseInt(request.getParameter("customerId")));
-    	customerForm.setCustomerName(request.getParameter("customerName"));
+        CustomerForm customerForm = new CustomerForm();
+        customerForm.setCustomerId(Integer.parseInt(request.getParameter("customerId")));
+        customerForm.setCustomerName(request.getParameter("customerName"));
 
-    	System.out.println(customerForm.getCustomerId());
-    	System.out.println(customerForm.getCustomerName());
+        System.out.println(customerForm.getCustomerId());
+        System.out.println(customerForm.getCustomerName());
 
-    	// 読み込む
+        // 読み込む
         final String qureySQL = "SELECT customer_id, customer_name FROM customer WHERE customer_id = " + customerForm.getCustomerId();
-    	CustomerBean customer = customerDao.getResult(qureySQL);
+        CustomerBean customer = customerDao.getResult(qureySQL);
 
-    	final String updateSQL;
-    	if (customer == null) {
-    		updateSQL = "INSERT INTO customer(customer_id, customer_name) VALUES(" + customerForm.getCustomerId() + ", '" +  customerForm.getCustomerName() + "')";
-    	} else {
-    		updateSQL = "UPDATE customer SET customer_name = '" + customerForm.getCustomerName() + "' WHERE customer_id = " +  customerForm.getCustomerId();
-    	}
-    	customerDao.executeSQL(updateSQL);
+        final String updateSQL;
+        if (customer == null) {
+            updateSQL = "INSERT INTO customer(customer_id, customer_name) VALUES(" + customerForm.getCustomerId() + ", '" +  customerForm.getCustomerName() + "')";
+        } else {
+            updateSQL = "UPDATE customer SET customer_name = '" + customerForm.getCustomerName() + "' WHERE customer_id = " +  customerForm.getCustomerId();
+        }
+        customerDao.executeSQL(updateSQL);
 
         // 画面遷移
         response.sendRedirect("/alphasweb/customerList");

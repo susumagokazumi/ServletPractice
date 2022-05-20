@@ -10,6 +10,7 @@ public class OrderDao  extends BaseDao<OrderBean>{
     @Override
     protected	OrderBean setBean(ResultSet rset) {
           OrderBean order = new OrderBean();
+          
             try {
                 order.setOrderId(rset.getInt("order_id"));
                 order.setOrderDate(rset.getTimestamp("order_date"));
@@ -17,6 +18,7 @@ public class OrderDao  extends BaseDao<OrderBean>{
                 order.setProdName(rset.getString("prod_name"));
                 order.setPrice(rset.getInt("price"));
                 order.setQty(rset.getInt("qty"));
+                order.setAmount(rset.getInt("amount"));
             } catch (SQLException ex) {
                 ex.printStackTrace();
                 order = null;

@@ -16,17 +16,14 @@ public class OrderBean {
     private int price;
     // 数量
     private int qty;
+    // 金額
+    private int amount;
+    
     public int getOrderId() {
         return orderId;
     }
     public void setOrderId(int orderId) {
         this.orderId = orderId;
-    }
-    public Timestamp getOrderDate() {
-        return orderDate;
-    }
-    public void setOrderDate(Timestamp orderDate) {
-        this.orderDate = orderDate;
     }
     public String getCustomerName() {
         return customerName;
@@ -34,6 +31,13 @@ public class OrderBean {
     public void setCustomerName(String customerName) {
         this.customerName = customerName;
     }
+    public Timestamp getOrderDate() {
+        return orderDate;
+    }
+    public void setOrderDate(Timestamp orderDate) {
+        this.orderDate = orderDate;
+    }
+   
     public String getProdName() {
         return prodName;
     }
@@ -58,7 +62,6 @@ public class OrderBean {
     public void setAmount(int amount) {
         this.amount = amount;
     }
-    // 金額
-    private int amount;
+   
 
 }
