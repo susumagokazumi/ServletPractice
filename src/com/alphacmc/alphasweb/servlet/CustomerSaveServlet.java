@@ -30,7 +30,7 @@ public class CustomerSaveServlet extends HttpServlet {
 
         // パラメータ取得 & Formセット
         CustomerForm customerForm = new CustomerForm();
-        customerForm.setCustomerId(Integer.parseInt(request.getParameter("customerId")));
+        customerForm.setCustomerId((request.getParameter("customerId")));
         customerForm.setCustomerName(request.getParameter("customerName"));
 
         System.out.println(customerForm.getCustomerId());
@@ -42,6 +42,16 @@ public class CustomerSaveServlet extends HttpServlet {
 
         final String updateSQL;
         if (customer == null) {
+             //数字判定
+            String message="";;
+            if (customerForm.getCustomerId().matches("[+-]?\\d*(\\.\\d+)?")==false) {
+                message = "商品IDは必ず数値を入力してください";
+           
+                request.setAttribute("message", message);
+                // 画面遷移
+                request.getRequestDispatcher("/customerNew.jsp").forward(request, response);
+                return;
+            }
             updateSQL = "INSERT INTO customer(customer_id, customer_name) VALUES(" + customerForm.getCustomerId() + ", '" +  customerForm.getCustomerName() + "')";
         } else {
             updateSQL = "UPDATE customer SET customer_name = '" + customerForm.getCustomerName() + "' WHERE customer_id = " +  customerForm.getCustomerId();

@@ -2,9 +2,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
   pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <html>
-<script src="/alphasweb-main/Js/NoBackSpace.js"></script>
 
 <head>
 <!-- Required meta tags -->
@@ -18,50 +17,30 @@
   integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
   crossorigin="anonymous">
 
-<title>注文データリスト</title>
+<title>ログイン</title>
 </head>
 
 <body>
-  <header>
-    <h6>
-      ユーザー名：${user.userName}<br>ユーザーID：${user.userId}
-    </h6>
-
-  </header>
-  <h2>商品</h2>
-  <font color="red"><c:out value="${message}" /></font>
-  <form action="prodSave" method="post">
+  <h2>ログイン</h2>
+<font color="red"><c:out value="${message}"/></font>
+  <form action="login" method="post">
     <table>
       <tr>
+        <th>ユーザーID</th>
+       <td><input type="text" name="user_id" size="30" />" </td>
       </tr>
       <tr>
-        <th>商品ID</th>
-        <td><input type="text" name="prodId" size="5" /></td>
-      </tr>
-      <tr>
-        <th>商品名</th>
-        <td><input type="text" name="prodName" size="30" />"</td>
-      </tr>
-      <tr>
-        <th>値段</th>
-        <td><input type="text" name="price" size="10" /></td>
-      </tr>
+        <th>パスワード</th>
+        <td><input type="text" name="password" size="30" />" </td></tr>
     </table>
     <br>
     <div class="row center-block text-center">
       <div class="col-1">
         <input type="submit" id="add"
-          class="btn btn-outline-primary btn-block" value="更新">
-      </div>
-      <div class="col-1">
-        <button type="button" id="return"
-          class="btn btn-outline-secondary btn-block"
-          onclick="history.back()">戻る</button>
+          class="btn btn-outline-primary btn-block" value="ログイン">
       </div>
     </div>
   </form>
-
-
 
   <!-- Optional JavaScript -->
   <!-- jQuery first, then Popper.js, then Bootstrap JS -->
